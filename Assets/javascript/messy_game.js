@@ -33,6 +33,10 @@ document.onfocus = function(puzzle) {
     [(Math.floor(Math.random() * states.length];
 
 
+    newGameDiv.createElement = ("p");
+    puzzleDiv.textContent = (("_ ") * states[i]);
+    newGameDiv.appendChild(puzzleDiv);
+
 // need to assign .Lowercase to make sure game still works if user tries to capitalize letters using shift or caps lock
 
 
@@ -93,7 +97,7 @@ if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s")) {
         }
     
         document.getElementById('wins').innerHTML = "Wins: " + wins;
-        document.getElementById('losses').innerHTML = "losses: " + losses;
+        document.getElementById('losses').innerHTML = "Losses: " + losses;
         document.getElementById('guesses').innerHTML = "Guesses left: " + guesses;
     
     }
