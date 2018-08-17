@@ -3,3 +3,37 @@
 /** need to assign media queries to make page responsive to viewport changes **/
 
 /** need to add fonts, colors, etc. **/
+
+header {
+    height: 150px;
+    margin: 0 auto;
+    width: 80%;
+    font-size: 60px;
+    text-align: center;
+}
+
+.underscores {
+    height: 200px;
+    margin: 15px auto;
+    width: 80%;
+    font-size: 80px;
+    text-align: center;
+}
+
+.right-guesses,
+.wrong-guesses {
+    height: 80px;
+    margin: 15px auto;
+    padding: 20px 20px;
+    width: 80%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.scoreboard {
+    height: 80px;
+    margin: 15px auto;
+    width: 80%;
+    font-size: 80px;
+    text-align: center;
+}

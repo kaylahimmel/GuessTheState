@@ -17,21 +17,22 @@ document.onkeyup = function(event) {
 
 
 //Choose word puzzle
-var word = state[(Math.floor(Math.random() * states.length];
+var ranWord = states[Math.floor(Math.random()) * states.length];
 
-var game = word.length;
+var len = ranWord.length;
 
 
 // loop through every letter in the game and replace every letter with an underscore, (don't use code below, make for loop)
 for (var i = 0; i < states.word.length; i++) {
-    this.textContent(underscore) * game[i]);
+    this.textContent(underscore) * len[i]);
     console.log(states.game[]); }
 }
 
+//may need to change "game" to "len" in the code below
 // only use an if statement at the beginning of each game
 var game = document.getElementByClassName("right-guesses");
     game.textContent = states
-        if word = "florida" {
+        if ranWord = "florida" {
             
 } 
 
