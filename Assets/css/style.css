@@ -20,13 +20,12 @@ header {
     text-align: center;
 }
 
-.right-guesses,
 .wrong-guesses {
     height: 80px;
     margin: 15px auto;
     padding: 20px 20px;
     width: 80%;
-    font-size: 20px;
+    font-size: 60px;
     text-align: center;
 }
 

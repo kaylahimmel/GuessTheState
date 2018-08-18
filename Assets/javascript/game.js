@@ -1,47 +1,61 @@
 // need to make an array of states (maybe use curly brackets with a bunch of arrays)
-var states = ["florida", 
-                "montana", 
-                "hawaii"
-                ];
-var letter = ""
+var states = ["florida", "montana", "hawaii", "alaska", "texas", "wisconsin", "georgia", "alabama", 
+                "oregon", "idaho", "oklahoma", "ohio", "minnesota", "maine", "vermont", "arizona", 
+                "louisiana", "tennessee", "massachusetts", "delaware", "nebraska", "utah", "iowa"];
 
-var guesses = []
+//choose word from array randomly               
+var ranState = Math.floor(Math.random() * states.length);
+var chosenState = states[ranState];
 
-var underscore = ("_ ")
+//create an empty arrays to hold the number of underscores needed per array word as well as right and wrong guesses
+var underScore = [];
+var wrongGuess = [];
 
-
-// store user key strokes
-document.onkeyup = function(event) {
-    letter = event.key.toLowerCase();
-    guesses.push(letter)
-
-
-//Choose word puzzle
-var ranWord = states[Math.floor(Math.random()) * states.length];
-
-var len = ranWord.length;
+// send content to the DOM
+var underScoreDiv = document.getElementsByClassName("underScore");
+var wrongGuessDiv = document.getElementsByClassName("wrongGuess");
 
 
-// loop through every letter in the game and replace every letter with an underscore, (don't use code below, make for loop)
-for (var i = 0; i < states.word.length; i++) {
-    this.textContent(underscore) * len[i]);
-    console.log(states.game[]); }
+// create underscores based on length of word
+makeUnderScore = () => {
+    for (var i = 0; i < chosenState.length; i++) {
+    underScore.push("_ ");
+}
+return underScore;
 }
 
-//may need to change "game" to "len" in the code below
-// only use an if statement at the beginning of each game
-var game = document.getElementByClassName("right-guesses");
-    game.textContent = states
-        if ranWord = "florida" {
-            
-} 
+// for (var i = 0; i < chosenState.length; i++) {
+//         underScore.push("_ ");
+//     };
 
+    //test to see if underScore loop pushes the correct number of "_" for each state in the array
+    console.log(underScore);
+  
+    // capture the user's guess
+    document.getElementById.onkeyup = function(event) {
+        var keyWord = event.key.toLowerCase();
+        var keyWord = String.fromCharCode(keyCode);
+    // action to take if user guesses correctly
+        if (chosenState.indexOf(keyWord) > -1) {
+            // display correct letter to user instead of the "_"
+            underScore[chosenState.indexOf(keyWord)] = keyWord;
+            underScoreDiv[0].innerHTML = underScore.join(" ");
+            // within the keyWord, check to see if all "_" are filled correctly: 
+            if (underScore.join(" ") == chosenState) {
+                alert("You win");
+            }
+        }
+        // action to take if user guesses wrong
+        else {
+            wrongGuess.push(keyWord);
+            wrongGuessDiv[0].innerHTML = wrongGuess;
 
-// add else statement that replaces the guess exactly in the underscore vs index
-
-
-// use if statements to check to see if there are underscores remaining in puzzle (0 = win), and if there are no guesses left (0=lose)
-// updated wins, losses, and update html with this
-
-
-//reset guesses and start new puzzle
+        }
+    }
+    
+    // document.getElementsByClassName("underscores").innerHTML = underScore.join(" ");
+    // keep track of score
+    var score = document.getElementByClassName("scoreboard").innerHTML = wins +
+    var wins = 0;
+    var losses = 0;
+    var guesses = 12;
