@@ -1,38 +1,34 @@
-/** need to add background image of map to page **/
+body {
+    font-family: 'Sawarabi Mincho', sans-serif;
+    background-color: lightblue;
+    text-align: center;
+    color: black;
+    width: 100%;
+}
 
-/** need to assign media queries to make page responsive to viewport changes **/
-
-/** need to add fonts, colors, etc. **/
+container {
+    width: auto;
+    margin: 15px auto;
+}
 
 header {
     height: 150px;
-    margin: 0 auto;
-    width: 80%;
+    padding: 10px 0px;
     font-size: 60px;
-    text-align: center;
 }
 
 .underscores {
     height: 200px;
-    margin: 15px auto;
-    width: 80%;
     font-size: 80px;
-    text-align: center;
+
 }
 
 .wrong-guesses {
     height: 80px;
-    margin: 15px auto;
-    padding: 20px 20px;
-    width: 80%;
     font-size: 60px;
-    text-align: center;
 }
 
 .scoreboard {
     height: 80px;
-    margin: 15px auto;
-    width: 80%;
     font-size: 80px;
-    text-align: center;
 }
