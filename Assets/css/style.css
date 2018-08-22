@@ -6,29 +6,44 @@ body {
     width: 100%;
 }
 
-container {
+.container {
     width: auto;
-    margin: 15px auto;
+    margin: 0 auto;
 }
 
 header {
-    height: 150px;
-    padding: 10px 0px;
-    font-size: 60px;
-}
-
-.underscores {
-    height: 200px;
+    height: 90px;
+    padding: 20px 0px;
     font-size: 80px;
-
 }
 
-.wrong-guesses {
-    height: 80px;
-    font-size: 60px;
+#underscore {
+    height: 100px;
+    font-size: 90px;
 }
 
-.scoreboard {
-    height: 80px;
-    font-size: 80px;
+table {
+    align: center;
+    width: 80%;
+    margin: 60px 20px;
+    position: relative;
+    text-align: center;
+}
+
+#wins, 
+#losses, 
+#guesses, 
+#guesses-left {
+    font-size: 50px;
+}
+
+.game {
+    position: absolute;
+    top: 150px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
 }

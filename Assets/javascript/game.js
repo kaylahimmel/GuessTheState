@@ -1,5 +1,3 @@
-// I give up...this is my 5th time rewriting this and I can't get the JS content to show in the HTML. I'll wait for the solution.
-
 // GLOBAL ELEMENTS-------------------------------------------------------------------------------------
 // array of states (aka my puzzle options)
 var states = ["florida", "montana", "hawaii", "alaska", "texas", "wisconsin", "georgia", "alabama", 
@@ -9,103 +7,80 @@ var states = ["florida", "montana", "hawaii", "alaska", "texas", "wisconsin", "g
 // each round, set:
 var wins = 0
 var losses = 0
-var maxGuesses = 10
-var remainingGuesses = 0
+var remainingGuesses = 10
 var puzzle = []
 var ranState;
 var guessedLetters = []
-var gameStarted = false
-var gameEnded = false
-
-
-// START THE GAME (AND RESTART ROUNDS)----------------------------------------------------------------
-var resetGame = function(remainingGuesses = maxGuesses) {
-    gameStarted = false;
-    //alert("You lose.");
-    //document.getElementByID("#scoreboard") = ("Losses: " + losses++);
-}
-
-
-// Randomly choose a word from "states" array and assign it to "ranState"               
 var ranState = Math.floor(Math.random() * states.length);
 var chosenState = states[ranState];
 console.log(chosenState);
 
-// Clear out arrays
-guessedLetters = [];
-puzzle = [];
 
-// Switch puzzle letters to underscores
-for (var i = 0; i < chosenState.length; i++) {
-    puzzle.push("_ ");
+// START THE GAME (AND RESTART ROUNDS)----------------------------------------------------------------
+var startGame = function() {
+    // Create our array of underscores
+    for (var i = 0; i < chosenState.length; i++) {
+        puzzle.push("_")
+    }
+
+    console.log(chosenState.length)
+    console.log(puzzle.length)
+
+    document.getElementById("wins").textContent = wins;
+    document.getElementById("losses").textContent = losses;
+    document.getElementById("underscore").textContent = puzzle.join(" ");
+    console.log("Game is started")
+}
+
+
+// RESET THE GAME-------------------------------------------------------------------------------------
+var resetGame = function(remainingGuesses = maxGuesses) {
+    gameStarted = false;
 }
 
 
 //  Update the display on the HTML Page
 function updateDisplay() {
-    //document.getElementById("#scoreboard").innerHTML = (Number("Wins: ") + wins++);
-    document.getElementByID("#game").innerHTML = "";
-    for (var i = 0; i < chosenState; i++) {
-        document.getElementByID("#game").innerHTML += ranState[i];
-    }
-    document.getElementByID("#guesses-left").innerHTML = remainingGuesses;
-    document.getElementByID("#guesses").innerHTML = guessedLetters;
+    document.getElementById("wins").textContent = wins;
+    document.getElementById("losses").textContent = losses;
+    document.getElementById("underscore").textContent = puzzle.join(" ");
 };
 
-// The actual game:
+// THE ACTUAL GAME
 // Capture user's key presses
 document.onkeyup = function(event) {
     var letter = event.key
-    guessedLetters.push(letter);
-    if (remainingGuesses > 0) {
-        if (!gameStarted) {
-            gameStarted = true;
-        }
-        if (guessedLetters.indexOf(letter) === -1) {
-            guessedLetters.push(letter);
-            letterInstances(letter);
-        }
+    // Checking to see if the user has already guessed a certain letter
+    if (guessedLetters.indexOf(letter) === -1) {
+        guessedLetters.push(letter);
+        letterInstances(letter);
     }
+    checkWin();
 }
 
+// The scoreboard
 function checkWin() {
-    if(puzzle.indexOf("_ ") === -1) {
+    console.log(puzzle)
+    if(puzzle.indexOf("_") === -1) {
         alert("You win!")
-        document.getElementByID("#scoreboard").innerHTML = ("Wins: " + wins++);
-        hasFinished = true;
-    }
-    else(remainingGuesses <= 0) {
+        wins++;   
+        resetGame();
+    } else if (remainingGuesses <= 0) {
         alert("You lose, try again.");
-        document.getElementByID("#scoreboard").innerHTML = ("Losses: " + losses++);
-        hasFinished = true;
-};
-
-
-// reset game once finished.
-if(gameEnded) {
-    resetGame();
-    gameEnded = false;
+        losses++;
+        resetGame();  
+    } 
     updateDisplay();
-}; 
-
+};
 
 // Find all instances of the key "letter" 
 function letterInstances(letter) {
-    // New array "indices" for letters
-    var indices = [];
     for (var i = 0; i < chosenState.length; i++) {
-        if(chosenState[i] === letter) {
-            indices.push(i);
-        }
-    }
-
-    // if there is nothing in "indices", remove a guess from "remainingGuesses"
-    if (indices.length <= 0) {
-        remainingGuesses--;
-    } else {
-        // Loop through all the "indices" and replace the underscores with corresponding letters.
-        for(var i = 0; i < indices.length; i++) {
-            puzzle[indices[i]] = letter;
+        if (letter === chosenState[i]) {
+            puzzle[i] = letter;
         }
     }
 };
+
+// Start the game
+startGame();

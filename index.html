@@ -15,19 +15,34 @@
 
 <body>
     <div class="container">
+                
         <header>
             <h1>Guess the State</h1>
         </header>
         
         <img src="Assets/images/blank-us-map_700px.svg" alt="United State map" width="700px">
 
-        <div id="game"></div>
+        <div class="game">
+            <div id="underscore"></div>
 
-        <div id="guesses"></div>
-
-        <div id="guesses-left"></div>
-
-        <div id="scoreboard"></div>
+            <table style="align: center">
+                <tr>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Guesses Left</th>
+                    <th>Guesses Letters</th>
+                </tr>
+                <tr>
+                    <td id="wins"></td>
+                    <td id="losses"></td>
+                    <td id="guesses-left"></td>
+                    <td id="guesses"></td>
+                </tr>
+            </table>
+           <!-- <div id="wins"></div>
+        
+            <div id="losses"></div> -->
+        </div>
     </div>
     
     <!-- My JavaScript file -->
