@@ -37,6 +37,10 @@ table {
     font-size: 50px;
 }
 
+#guesses {
+    width: 200px;
+}
+
 .game {
     position: absolute;
     top: 150px;
