@@ -7,34 +7,42 @@ var states = ["florida", "montana", "hawaii", "alaska", "texas", "wisconsin", "g
 // each round, set:
 var wins = 0;
 var losses = 0;
-var remainingGuesses = 10;
-var puzzle = [];
+var remainingGuesses = 6;
+var currentGame = [];
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var guessedLetters = [];
 var wrongGuesses = [];
 var ranState = Math.floor(Math.random() * states.length);
 var chosenState = states[ranState];
-console.log(chosenState);
-    
-// Create an array of underscores
-var startGame = function() {
+var startButton = document.getElementById("start");
+var howToDiv = document.getElementById("how-to");
+var gameDiv = document.getElementById("game");
+var puzzleDiv = document.getElementById("puzzle");
+var promptDiv = document.getElementById("prompt");
+
+
+// Create an array of underscores for each puzzle
+function startGame() {
     for (var i = 0; i < chosenState.length; i++) {
-        puzzle.push("_")
+        currentGame.push("_")
     }
     updateDisplay();
+};
 
+    
 //  Update the display on the HTML Page
 function updateDisplay() {
     document.getElementById("wins").textContent = wins;
     document.getElementById("losses").textContent = losses;
-    document.getElementById("underscore").textContent = puzzle.join(" ");
+    document.getElementById("puzzle").textContent = currentGame.join(" ");
     document.getElementById("guesses-left").textContent = remainingGuesses;
     document.getElementById("guesses").textContent = guessedLetters.join(", ")
 };
 
+
 // Add wins/losses to the scoreboard area
 function checkWin() {
-    if(puzzle.indexOf("_") === -1) {
+    if(currentGame.indexOf("_") === -1) {
         alert("You win!");
         wins++;   
         resetGame();
@@ -46,14 +54,16 @@ function checkWin() {
     updateDisplay();
 };
 
+
 // Find all instances of the key "letter" 
 function letterInstances(letter) {
     for (var i = 0; i < chosenState.length; i++) {
         if (letter === chosenState[i]) {
-            puzzle[i] = letter;
+            currentGame[i] = letter;
         }
     }
 };
+
 
 // Capture user's key presses
 document.onkeyup = function(event) {
@@ -64,20 +74,33 @@ document.onkeyup = function(event) {
         guessedLetters.push(letter);
         letterInstances(letter);
         remainingGuesses--;
-        document.getElementById("prompt").textContent = "";
+        promptDiv.textContent = "";
         } else {
-        document.getElementById("prompt").textContent = "You've already guessed that letter";
+        promptDiv.textContent = "You've already guessed that letter";
         }
     } else {
-    document.getElementById("prompt").textContent = "You've must guess a letter";
+    promptDiv.textContent = "You must guess a letter";
     }
     checkWin();
 };
 
-// RESET THE GAME
-var resetGame = function() {
+
+document.onload = function() {
+    howToDiv.style.display = "block";
+    gameDiv.style.display = "none";
+};
+
+startButton.onclick = function() {
+    howToDiv.style.display = "none";
+    gameDiv.style.display = "block";
+    startGame();
+    // startButton.style.disply = "none";
+}
+
+// Reset the Game
+function resetGame() {
     remainingGuesses = 10
-    puzzle = []
+    currentGame = []
     guessedLetters = []
     ranState();
     startGame();

@@ -10,7 +10,7 @@
      <!-- My CSS file -->
     <link rel="stylesheet" type="text/css" media="screen" href="Assets/css/style.css" />
     <!-- Google Font file -->
-    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arsenal|Sawarabi+Mincho" rel="stylesheet">
 </head>
 
 <body>
@@ -18,32 +18,35 @@
                 
         <header>
             <h1>Guess the State</h1>
+            <h6>A hangman-style game</h6>
         </header>
         
         <img src="Assets/images/blank-us-map_700px.svg" alt="United State map" width="700px">
 
+        <div class="how-to">
+            <p>The answer to each puzzle is a state name, so only letters will be used. To start, guess any letter. 
+                If you choose a correct letter, it will appear in the puzzle. If the letter you choose is not used 
+                in the puzzle, your remaining guesses will decrease by one. You will win by guessing all of the 
+                correct letters before the remaining guesses teaches zero.
+            </p>
+            <button id="start" onclick="playGame()" value="Start Game">Start Game</button>
+        </div>
+
         <div class="game">
-            <div id="underscore"></div>
+            <div id="puzzle"></div>
 
             <div id="prompt"></div>
 
-            <table style="align: center">
-                <tr>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Guesses Left</th>
-                    <th>Guesses Letters</th>
-                </tr>
-                <tr>
-                    <td id="wins"></td>
-                    <td id="losses"></td>
-                    <td id="guesses-left"></td>
-                    <td id="guesses"></td>
-                </tr>
-            </table>
-           <!-- <div id="wins"></div>
-        
-            <div id="losses"></div> -->
+            <div class="scoreboard">
+                <h6>Guessed Letters: </h6>
+                    <p id="guesses"></p>
+                <h6>Remaining Guesses: </h6>
+                    <p id="guesses-left"></p>
+                <h6>Total Wins: </h6>
+                    <p id="wins"></p>
+                <h6>Total Losses: </h6>
+                    <p id="losses"></p>
+            </div>
         </div>
     </div>
     

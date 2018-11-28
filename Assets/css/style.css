@@ -1,14 +1,9 @@
 body {
-    font-family: 'Sawarabi Mincho', sans-serif;
+    font-family: 'Arsenal', sans-serif;
     background-color: lightblue;
     text-align: center;
     color: black;
     width: 100%;
-}
-
-.container {
-    width: auto;
-    margin: 0 auto;
 }
 
 header {
@@ -17,17 +12,84 @@ header {
     font-size: 80px;
 }
 
-#underscore {
-    height: 100px;
-    font-size: 90px;
+h1 {
+    font-family: 'Sawarabi Mincho', sans-serif;
+    font-size: 50px;
 }
 
-table {
-    align: center;
-    width: 80%;
-    margin: 60px 20px;
-    position: relative;
+h6 {
+    font-family: 'Arsenal', sans-serif;
+    font-size: 22px;
+    line-height: 1.75em;
+}
+
+button {
+    margin: 15px 0px 0px;
+    padding: 5px 10px;
+    font-size: 18px;
+    border-radius: 4px;
+    display: inline-block;
+    background-color: lightblue;
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+img {
+    top: 10px;
     text-align: center;
+}
+
+p {
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+.container {
+    width: auto;
+    position: relative;
+    margin: 0 auto;
+}
+
+.how-to {
+    position: absolute;
+    top: 120px;
+    margin: 10px 120px 0px 120px;
+    background-color: white;
+    filter: alpha(opacity=65);
+    opacity: 0.65;
+    padding: 20px 20px;
+    font-size: 18px;
+    line-height: 1.2em;
+}
+
+.game {
+    position: absolute;
+    top: 240px;
+    bottom: 0;
+    left: 0;
+    right: 50;
+    height: 100%;
+    width: 100%;
+}
+
+.scoreboard {
+    position: relative;
+    top: 100px;
+    float: left;
+    margin-left: 50px;
+    width: 200px;
+    background-color: white;
+    filter: alpha(opacity=65);
+    opacity: 0.65;
+}
+
+#puzzle {
+    float: left;
+    margin: 0px 50px;
+    font-size: 80px;
+    background-color: white;
+    filter: alpha(opacity=65);
+    opacity: 0.65;
 }
 
 #wins, 
@@ -37,17 +99,9 @@ table {
     font-size: 50px;
 }
 
-#guesses {
-    width: 200px;
-}
-
-.game {
-    position: absolute;
-    top: 150px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 1;
+#prompt {
+    top: 240px;
+    color: red;
+    font-weight: bold;
+    font-style: italic;
 }
