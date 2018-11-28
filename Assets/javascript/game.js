@@ -21,7 +21,7 @@ var puzzleDiv = document.getElementById("puzzle");
 var promptDiv = document.getElementById("prompt");
 
 
-// Create an array of underscores for each puzzle
+// Create an array of underscores for the puzzle in each round
 function startGame() {
     for (var i = 0; i < chosenState.length; i++) {
         currentGame.push("_")
@@ -30,7 +30,7 @@ function startGame() {
 };
 
     
-//  Update the display on the HTML Page
+//  Update the "scoreboard" on the HTML Page
 function updateDisplay() {
     document.getElementById("wins").textContent = wins;
     document.getElementById("losses").textContent = losses;
@@ -42,6 +42,7 @@ function updateDisplay() {
 
 // Add wins/losses to the scoreboard area
 function checkWin() {
+    console.log(currentGame)
     if(currentGame.indexOf("_") === -1) {
         alert("You win!");
         wins++;   
@@ -71,9 +72,11 @@ document.onkeyup = function(event) {
     // Checking to see if the user has already guessed a certain letter
     if (alphabet.indexOf(letter) >= 0) {
         if (guessedLetters.indexOf(letter) === -1) {
+            if (chosenState.indexOf(letter) === -1) {
+                remainingGuesses--;
+            } 
         guessedLetters.push(letter);
         letterInstances(letter);
-        remainingGuesses--;
         promptDiv.textContent = "";
         } else {
         promptDiv.textContent = "You've already guessed that letter";
@@ -90,18 +93,19 @@ document.onload = function() {
     gameDiv.style.display = "none";
 };
 
-startButton.onclick = function() {
-    howToDiv.style.display = "none";
-    gameDiv.style.display = "block";
-    startGame();
-    // startButton.style.disply = "none";
-}
+// startButton.onclick = function() {
+//     howToDiv.style.display = "none";
+//     gameDiv.style.display = "block";
+//     startGame();
+//     // startButton.style.disply = "none";
+// }
 
 // Reset the Game
 function resetGame() {
-    remainingGuesses = 10
+    remainingGuesses = 6
     currentGame = []
     guessedLetters = []
-    ranState();
+    ranState = Math.floor(Math.random() * states.length);
+    chosenState = states[ranState];
     startGame();
 };
